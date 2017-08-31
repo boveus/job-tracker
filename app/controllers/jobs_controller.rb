@@ -25,15 +25,28 @@ class JobsController < ApplicationController
   end
 
   def edit
-    # implement on your own!
+    @company = Company.find(params[:company_id])
+    @job = Job.find(params[:id])
   end
 
   def update
-    # implement on your own!
+    @job = Job.find(params[:id])
+    @job.update(job_params)
+    if @job.save
+      flash[:success] = "#{@job.title} updated!"
+
+      redirect_to company_job_path(@job.company.id, @job.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
-    # implement on your own!
+    job = Job.find(params[:id])
+    job.destroy
+
+    flash[:success] = "#{job.title} was successfully deleted!"
+    redirect_to company_jobs_path(params[:company_id])
   end
 
   private
@@ -42,3 +55,10 @@ class JobsController < ApplicationController
     params.require(:job).permit(:title, :description, :level_of_interest, :city)
   end
 end
+# 
+# The user can create a new Category by filling out a form. Each Category has a title (e.g. “Web Development”, “Education”, “Finance”).
+# When the user successfully creates a Category they are shown a page with the Category title.
+# When the user tries to create a Category that already exists, they are brought back to the page with the form to create a Category.
+# The user can view a list of all Categories on a single page, and each Category can be deleted from that page. There is also a link to “Edit” each Category, which takes the user to a form where they can update the Category.
+# When the user creates a new Job, they are required to select its Category from a drop down menu of existing categories. They also see a link to create a new Category.
+# When the user visits a page for a specific Category, they see a list of Jobs in that Category
