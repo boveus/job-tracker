@@ -1,6 +1,3 @@
-<%= form_for @category do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<h2>New<%= @category.title %> here!</h2>
 
-  <%= f.submit %>
-<% end %>
+<%= render partial: "form" %>
