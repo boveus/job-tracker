@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to category_path(@category)
+      redirect_to @category
     else
       render :new
     end
@@ -24,7 +24,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
 
     flash[:success] = "#{@category.title} was successfully deleted!"
-    redirect_to categories_path
+    redirect_to :categories
   end
 
   def edit
@@ -36,7 +36,7 @@ class CategoriesController < ApplicationController
     @category.update(category_params)
     if @category.save
       flash[:success] = "#{@category.title} updated!"
-      redirect_to category_path(@category)
+      redirect_to @category
     else
       render :edit
     end
