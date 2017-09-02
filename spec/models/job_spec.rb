@@ -24,7 +24,7 @@ describe Job do
         company = Company.new(name: "Turing")
         category = create(:category)
 
-        job = Job.create(title: "Developer", level_of_interest: 40, city: "Denver", company: company, categories: category)
+        job = Job.create(title: "Developer", level_of_interest: 40, city: "Denver", company: company, category: category)
         expect(job).to be_valid
       end
     end

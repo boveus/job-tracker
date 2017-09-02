@@ -11,7 +11,10 @@ class JobsController < ApplicationController
 
   def create
     @company = Company.find(params[:company_id])
+    @category = Category.find_or_create_by(title: params[:job][:category])
     @job = @company.jobs.new(job_params)
+    @job.category = @category
+
     if @job.save
       flash[:success] = "You created #{@job.title} at #{@company.name}"
       redirect_to company_job_path(@company, @job)
@@ -31,7 +34,10 @@ class JobsController < ApplicationController
 
   def update
     @job = Job.find(params[:id])
+
+    @category = Category.find_or_create_by(title: params[:job][:category])
     @job.update(job_params)
+    @job.category = @category
     if @job.save
       flash[:success] = "#{@job.title} updated!"
 
@@ -55,7 +61,7 @@ class JobsController < ApplicationController
     params.require(:job).permit(:title, :description, :level_of_interest, :city)
   end
 end
-# 
+#
 # The user can create a new Category by filling out a form. Each Category has a title (e.g. “Web Development”, “Education”, “Finance”).
 # When the user successfully creates a Category they are shown a page with the Category title.
 # When the user tries to create a Category that already exists, they are brought back to the page with the form to create a Category.

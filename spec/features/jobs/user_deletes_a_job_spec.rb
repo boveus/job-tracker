@@ -3,7 +3,8 @@ require 'rails_helper'
 describe "User deletes existing job" do
   scenario "a user can delete a job" do
     company = create(:company)
-    job = create(:job, company: company)
+    category = create(:category)
+    job = create(:job, company: company, category: category)
 
     visit company_jobs_path(company)
 
