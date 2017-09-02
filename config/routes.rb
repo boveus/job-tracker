@@ -2,6 +2,12 @@ Rails.application.routes.draw do
     resources :companies do
       resources :jobs
     end
+
+
+    resources :jobs do
+      resources :comments, only: :create
+    end
+    
     resources :categories
 
   # The priority is based upon order of creation: first created -> highest priority.

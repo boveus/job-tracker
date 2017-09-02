@@ -8,11 +8,10 @@ describe "User creates a new job comment" do
 
     visit company_job_path(company, job)
 
-    fill_in "category[title]", with: "Cool Job"
+    fill_in "comment_content", with: "I hate this job"
+    click_on 'Create Comment'
 
-    click_on 'Create'
-
-    expect(current_path).to eq("/categories/#{Category.last.id}")
-    expect(page).to have_content("#{Category.first.title}")
+    expect(current_path).to eq("/companies/#{company.id}/jobs/#{job.id}")
+    expect(page).to have_content("#{job.comments.first.content}")
   end
 end

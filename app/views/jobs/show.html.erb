@@ -16,3 +16,10 @@ Category: <%= @job.category.title %>
 <%= link_to "Delete", company_job_path(@job), method: "delete" %>
 <br />
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
+
+<br />
+
+<%= render partial: "comment_form" %>
+
+<h4>Comments</h4>
+<%= render partial: 'comment', collection: @job.comments.reverse %>
