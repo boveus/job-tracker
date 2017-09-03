@@ -3,10 +3,7 @@ require 'rails_helper'
 describe "User creates a new job comment" do
   scenario "a user can create a new contact for a company" do
     company = create(:company)
-
     visit company_path(company)
-
-    # save_and_open_page
 
     fill_in "contact[name]", with: "Penelope Santorini"
     fill_in "contact[position]", with: "Hiring Manager"
