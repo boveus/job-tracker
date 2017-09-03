@@ -3,6 +3,8 @@ Rails.application.routes.draw do
       resources :jobs
     end
 
+    get '/jobs', :to => 'jobs#all_jobs', :as => 'all_jobs'
+
     resources :jobs do
       resources :comments, only: :create
     end
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
     end
 
     resources :categories
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

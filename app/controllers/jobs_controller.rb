@@ -4,6 +4,14 @@ class JobsController < ApplicationController
     @jobs = @company.jobs
   end
 
+  def all_jobs
+    if params[:sort] == 'location'
+      @jobs = Job.sort_by_city
+    else
+      @jobs = Job.all
+    end
+  end
+
   def new
     @company = Company.find(params[:company_id])
     @job = Job.new()

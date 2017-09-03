@@ -42,4 +42,14 @@ describe Job do
       expect(job).to respond_to(:category)
     end
   end
+  describe "class methods" do
+    it "can sort jobs by city" do
+      category = create(:category)
+      company = create(:company)
+      10.times { create(:job, company: company, category: category) }
+      create(:job, company: company, category: category, city: 'Boston')
+
+      expect(Job.sort_by_city.first.city).to eq('Boston')
+    end
+  end
 end

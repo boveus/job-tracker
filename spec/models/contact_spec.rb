@@ -21,7 +21,7 @@ describe Contact do
   end
 
   describe "relationships" do
-    it "belongs to a caompany" do
+    it "belongs to a company" do
       contact = Contact.new(name: "Dropbox")
       expect(contact).to respond_to(:company)
     end
