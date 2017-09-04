@@ -8,6 +8,10 @@ class Job < ApplicationRecord
     order("city ASC")
   end
 
+  def self.sort_by_interest
+    order("level_of_interest DESC")
+  end
+
   def self.count_by_level_of_interest
     group(:level_of_interest)
     .order("count(level_of_interest) DESC")

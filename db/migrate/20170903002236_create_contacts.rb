@@ -4,7 +4,7 @@ class CreateContacts < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :position
       t.string :email
-      t.references :company
+      t.references :company, index: true
 
       t.timestamps
     end

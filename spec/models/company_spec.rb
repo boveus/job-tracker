@@ -48,10 +48,6 @@ describe Company do
         expect(interest["Umbrella Corp"].round(2)).to eq(7.5)
         expect(interest["company2"].round(2)).to eq(5.0)
         expect(interest["company3"].round(2)).to eq(10.0)
-        binding.pry
       end
   end
 end
-
-# The top three companies ranked by average level of interest
-# along with their respective average level of interest.
