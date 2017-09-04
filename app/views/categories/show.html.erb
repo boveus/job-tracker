@@ -1,10 +1,9 @@
-<h3>Category <%= @category.id %> </h3>
-<p> Category Title: <%= @category.title %> </p>
+<h3> Category: <%= @category.title %> </h3>
 <ul>
   Jobs that belong to this category:
-  <%= @category.jobs.each do |job| %>
-  <il>
-    <%= link_to job.title, company_job_path(job) %>
-  </il>
+  <% @category.jobs.each do |job| %>
+  <li>
+    <%= link_to "#{job.title} at #{job.company.name}", company_job_path(job) %>
+  </li>
     <% end %>
 </ul>

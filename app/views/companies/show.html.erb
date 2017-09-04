@@ -5,10 +5,16 @@
 <% end %>
 </ul>
 
+<%= link_to "Create a new #{@company.name} job", new_company_job_path(@company) %>
+
+<h2><%= @company.name %> contacts:</h2>
+<ul>
 <% @company.contacts.each do |contact| %>
-  <ul>Name: <%= contact.name %></ul>
-  <ul>Position: <%= contact.position %></ul>
-  <ul>E-mail: <%= contact.email %></ul>
+  <li>Name: <%= contact.name %></li>
+  <li>Position: <%= contact.position %></li>
+  <li>E-mail: <%= mail_to contact.email %></li>
+  <br />
 <% end %>
+</ul>
 
 <%= render partial: "contact_form" %>

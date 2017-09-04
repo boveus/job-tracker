@@ -9,7 +9,7 @@ class Company < ApplicationRecord
     .average(:level_of_interest)
   end
 
-  def self.top_three_by_average_imterest
+  def self.top_three_by_average_interest
     average_interest_hash = average_interest_of_jobs.sort_by {|company, average| average}.reverse.to_h
     average_interest_hash.each do |company, interest|
       average_interest_hash[company] = interest.to_f.round(2)

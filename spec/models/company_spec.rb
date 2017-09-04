@@ -62,7 +62,7 @@ describe Company do
       12.times { create(:job, company: company, category: category, level_of_interest: 10) }
       7.times { create(:job, company: company, category: category, level_of_interest: 5) }
 
-      top_three_companies = Company.top_three_by_average_imterest
+      top_three_companies = Company.top_three_by_average_interest
 
       expect(top_three_companies.length).to eq(3)
       expect(top_three_companies.values[0]).to eq(10.0)

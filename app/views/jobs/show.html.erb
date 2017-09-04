@@ -1,26 +1,22 @@
 <h3> <%= @job.title %> at <%= @job.company.name %> </h3>
-
 <ul>
-
 Description: <%= @job.description %>
 <br>
-
 Level of Interest: <%= @job.level_of_interest %>
 <br>
-
 City: <%= @job.city %>
 <br>
-
 Category: <%= @job.category.title %>
 <br />
 <%= link_to "Edit", edit_company_job_path(@company, @job) %>
 <%= link_to "Delete", company_job_path(@job), method: "delete" %>
 <br />
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
-
+<br />
+<br />
+<%= link_to "All #{@company.name} jobs", company_jobs_path(@job.company) %>
 <br />
 <br />
 <%= render partial: "comment_form" %>
-
 <h4>Comments</h4>
 <%= render partial: 'comment', collection: @job.comments.reverse %>

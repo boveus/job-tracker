@@ -18,6 +18,8 @@
 
 
 <ul> Count by level of interest
+  <br />
+<%= link_to "View jobs sorted by interest", all_jobs_path(sort: 'interest') %>
 <% @count_by_level_of_interest.each do |level_of_interest, count| %>
   <li>
     You have <%= count %> jobs that your level of interest is at <%= level_of_interest %>

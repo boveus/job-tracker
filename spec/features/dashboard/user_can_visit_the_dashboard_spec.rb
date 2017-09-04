@@ -12,6 +12,5 @@ describe "User sees the dashbooard" do
 
     expect(current_path).to eq("/dashboard")
     expect(page).to have_content("Dashboard")
-    save_and_open_page
   end
 end
