@@ -1,9 +1,9 @@
 <h3>All Jobs for <strong><%= @company.name %></strong> </h3>
-
+<ul>
 <% @company.jobs.each do |job| %>
-  <ul><%= job.title %></ul>
+    <li class=job_<%= job.id %>> <%= link_to "#{job.title}", company_job_path(job.company, job) %></li>
 <% end %>
-<br />
+</ul>
 
 <% @company.contacts.each do |contact| %>
   <ul>Name: <%= contact.name %></ul>

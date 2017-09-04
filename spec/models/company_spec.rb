@@ -49,5 +49,25 @@ describe Company do
         expect(interest["company2"].round(2)).to eq(5.0)
         expect(interest["company3"].round(2)).to eq(10.0)
       end
+    it "retrieves the top 3 companies based on level of interest" do
+      category = create(:category)
+      company = create(:company)
+      company2 = create(:company, name: 'company2')
+      company3 = create(:company, name: 'company3')
+
+
+      7.times { create(:job, company: company2, category: category, level_of_interest: 5) }
+      3.times { create(:job, company: company3, category: category, level_of_interest: 10) }
+      5.times { create(:job, company: company, category: category, level_of_interest: 5) }
+      12.times { create(:job, company: company, category: category, level_of_interest: 10) }
+      7.times { create(:job, company: company, category: category, level_of_interest: 5) }
+
+      top_three_companies = Company.top_three_by_average_imterest
+
+      expect(top_three_companies.length).to eq(3)
+      expect(top_three_companies.values[0]).to eq(10.0)
+      expect(top_three_companies.values[1]).to eq(7.5)
+      expect(top_three_companies.values[2]).to eq(5.0)
+    end
   end
 end

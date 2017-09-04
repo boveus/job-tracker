@@ -1,5 +1,6 @@
-Title: <%= @job.title %>
-<br>
+<h3> <%= @job.title %> at <%= @job.company.name %> </h3>
+
+<ul>
 
 Description: <%= @job.description %>
 <br>
@@ -13,15 +14,12 @@ City: <%= @job.city %>
 Category: <%= @job.category.title %>
 <br />
 <%= link_to "Edit", edit_company_job_path(@company, @job) %>
-
-<br />
-
 <%= link_to "Delete", company_job_path(@job), method: "delete" %>
 <br />
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
 
 <br />
-
+<br />
 <%= render partial: "comment_form" %>
 
 <h4>Comments</h4>

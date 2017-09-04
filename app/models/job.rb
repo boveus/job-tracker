@@ -8,6 +8,10 @@ class Job < ApplicationRecord
     order("city ASC")
   end
 
+  def self.filter_by_city(city)
+    where("city = ?", city)
+  end
+
   def self.sort_by_interest
     order("level_of_interest DESC")
   end

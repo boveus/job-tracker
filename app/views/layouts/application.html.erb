@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+<header class=eqi-container>
+  <%= link_to 'Jobs Dashboard', :dashboard %>
+  <%= link_to 'All Companies', :companies %>
+  <%= link_to 'All jobs', :all_jobs %>
+</header>
+
 <head>
   <title>JobTracker</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -13,4 +19,6 @@
 <%= yield %>
 
 </body>
+
+
 </html>

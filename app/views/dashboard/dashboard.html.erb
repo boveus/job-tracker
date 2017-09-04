@@ -1,1 +1,26 @@
 <h3>Dashboard</h3>
+
+<ul> Count by city
+<% @count_by_city.each do |city, count| %>
+  <li>
+    There are <%= count %> jobs available in <%= link_to city, all_jobs_path(location: city) %>
+  </li>
+<% end %>
+</ul>
+
+<ul> Top three companies based on jobs level of interest
+<% @top_three_companies_by_interest.each do |company, interest| %>
+  <li>
+    <%= link_to company, company_jobs_path(Company.find_by(name: company)) %> is your top company with an average level of <%= interest %>
+  </li>
+<% end %>
+</ul>
+
+
+<ul> Count by level of interest
+<% @count_by_level_of_interest.each do |level_of_interest, count| %>
+  <li>
+    You have <%= count %> jobs that your level of interest is at <%= level_of_interest %>
+  </li>
+<% end %>
+</ul>
