@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
     get '/jobs', :to => 'jobs#all_jobs', :as => 'all_jobs'
 
+    get '/dashboard', :to => 'dashboard#dashboard', :as => 'dashboard'
+
     resources :jobs do
       resources :comments, only: :create
     end

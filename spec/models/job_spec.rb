@@ -51,5 +51,28 @@ describe Job do
 
       expect(Job.sort_by_city.first.city).to eq('Boston')
     end
+    it "returns a count of jobs by level of interest" do
+      category = create(:category)
+      company = create(:company)
+      12.times { create(:job, company: company, category: category, level_of_interest: 10 ) }
+      7.times { create(:job, company: company, category: category, level_of_interest: 5 ) }
+
+      count_by_level_of_interest = Job.count_by_level_of_interest
+
+      expect(count_by_level_of_interest[10]).to eq(12)
+      expect(count_by_level_of_interest[5]).to eq(7)
+
+    end
+    it "returns a count of jobs by location and provides a link to jobs in that location" do
+      category = create(:category)
+      company = create(:company)
+      12.times { create(:job, company: company, category: category, city: "Boston" ) }
+      7.times { create(:job, company: company, category: category, city: "Denver" ) }
+
+      count_by_city = Job.count_by_city
+
+      expect(count_by_city["Boston"]).to eq(12)
+      expect(count_by_city["Denver"]).to eq(7)
+    end
   end
 end
